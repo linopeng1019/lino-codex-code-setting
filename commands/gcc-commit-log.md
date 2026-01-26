@@ -1,4 +1,4 @@
-幫我為 git tree 上最後一個 commit 寫合適的 commit message，針對 GCC 專案的規範：
+幫我為 git tree diff 上寫合適的 commit message，針對 GCC 專案的規範：
 
 格式要求：
 - 每行不超過 79 字元（程式碼、指令、路徑、網址除外）
