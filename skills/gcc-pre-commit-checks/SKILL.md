@@ -1,6 +1,6 @@
 ---
 name: gcc-pre-commit-checks
-description: Use this as the default GCC pre-commit workflow. It runs three required gates in order on staged changes: git clang-format, contrib/check_GNU_style.py, and contrib/gcc-changelog/git_check_commit.py after commit or amend. Use for requests like "check before commit", "run all GCC checks", or "prepare this patch for upstream".
+description: Use this as the default GCC pre-commit workflow. It runs three required gates in order on staged changes: git clang-format, contrib/check_GNU_style.py, and contrib/gcc-changelog/git_check_commit.py after commit or amend. Also use for GCC commit-log style requests that need GCC subject/ChangeLog conventions.
 ---
 
 # GCC pre-commit checks skill
