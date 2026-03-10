@@ -1,0 +1,32 @@
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+personality = "pragmatic"
+[projects."/home/users1/linopeng"]
+trust_level = "trusted"
+
+
+[projects."/home/users/linopeng"]
+trust_level = "trusted"
+
+[projects."/fast-playground2/linopeng/bsv/tmp/gcc-riscv"]
+trust_level = "trusted"
+
+# MCP
+
+[mcp_servers.andes-bugzilla]
+command = "/usr/bin/env"
+args = ["-u", "http_proxy", "-u", "https_proxy", "-u", "HTTP_PROXY", "-u", "HTTPS_PROXY", "-u", "ALL_PROXY", "-u", "all_proxy", "python3", "/home/users/linopeng/.codex/bugzilla-jsonrpc-mcp/server.py"]
+
+[mcp_servers.andes-bugzilla.env]
+BUGZILLA_BASE_URL = "http://e-andes.andestech.com/bugzilla5"
+NO_PROXY = "127.0.0.1,localhost,e-andes.andestech.com"
+no_proxy = "127.0.0.1,localhost,e-andes.andestech.com"
+
+[mcp_servers.andes-gitea]
+command = "docker"
+args = ["run", "-i", "--rm", "-e", "GITEA_ACCESS_TOKEN", "-e", "GITEA_HOST", "docker.gitea.com/gitea-mcp-server", "/app/gitea-mcp", "-t", "stdio"]
+
+[mcp_servers.andes-gitea.env]
+GITEA_HOST = "https://gitea.andestech.com"
+NO_PROXY = "127.0.0.1,localhost,gitea.andestech.com"
+no_proxy = "127.0.0.1,localhost,gitea.andestech.com"

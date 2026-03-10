@@ -1,0 +1,24 @@
+# Secrets
+auth.json
+
+# Runtime/state files
+.personality_migration
+history.jsonl
+session_index.jsonl
+models_cache.json
+version.json
+state_*.sqlite*
+state_*.sqlite-journal
+
+# Runtime directories
+log/
+tmp/
+sessions/
+shell_snapshots/
+memories/
+
+# Built-in system skills (managed by Codex itself)
+skills/.system/
+
+# Python cache
+__pycache__/
