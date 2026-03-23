@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "high"
 personality = "pragmatic"
 [projects."/home/users1/linopeng"]
@@ -11,22 +11,63 @@ trust_level = "trusted"
 [projects."/fast-playground2/linopeng/bsv/tmp/gcc-riscv"]
 trust_level = "trusted"
 
-# MCP
+# MCP server setting
+[mcp_servers.github]
+command = "/home/users/linopeng/.claude/plugins/github-mcp-server/bin/github-mcp-server"
+args = ["stdio"]
+
+[mcp_servers.github.env]
+GITHUB_PERSONAL_ACCESS_TOKEN = "$GITHUB_PERSONAL_ACCESS_TOKEN"
+http_proxy = "$http_proxy"
+https_proxy = "$https_proxy"
+HTTP_PROXY = "$HTTP_PROXY"
+HTTPS_PROXY = "$HTTPS_PROXY"
+ALL_PROXY = "$ALL_PROXY"
+all_proxy = "$all_proxy"
+NO_PROXY = "$NO_PROXY"
+no_proxy = "$no_proxy"
 
 [mcp_servers.andes-bugzilla]
-command = "/usr/bin/env"
-args = ["-u", "http_proxy", "-u", "https_proxy", "-u", "HTTP_PROXY", "-u", "HTTPS_PROXY", "-u", "ALL_PROXY", "-u", "all_proxy", "python3", "/home/users/linopeng/.codex/bugzilla-jsonrpc-mcp/server.py"]
+command = "python3"
+args = [
+  "/home/users/linopeng/.codex/bugzilla-jsonrpc-mcp/server.py",
+]
 
 [mcp_servers.andes-bugzilla.env]
+BUGZILLA_API_KEY = "$BUGZILLA_API_KEY"
 BUGZILLA_BASE_URL = "http://e-andes.andestech.com/bugzilla5"
-NO_PROXY = "127.0.0.1,localhost,e-andes.andestech.com"
-no_proxy = "127.0.0.1,localhost,e-andes.andestech.com"
+http_proxy = "$http_proxy"
+https_proxy = "$https_proxy"
+HTTP_PROXY = "$HTTP_PROXY"
+HTTPS_PROXY = "$HTTPS_PROXY"
+ALL_PROXY = "$ALL_PROXY"
+all_proxy = "$all_proxy"
+NO_PROXY = "$NO_PROXY"
+no_proxy = "$no_proxy"
 
 [mcp_servers.andes-gitea]
 command = "docker"
-args = ["run", "-i", "--rm", "-e", "GITEA_ACCESS_TOKEN", "-e", "GITEA_HOST", "docker.gitea.com/gitea-mcp-server", "/app/gitea-mcp", "-t", "stdio"]
+args = [
+  "run",
+  "-i",
+  "--rm",
+  "-e", "GITEA_ACCESS_TOKEN",
+  "-e", "GITEA_HOST",
+  "docker.gitea.com/gitea-mcp-server",
+  "/app/gitea-mcp",
+  "-t", "stdio",
+]
 
 [mcp_servers.andes-gitea.env]
-GITEA_HOST = "https://gitea.andestech.com"
-NO_PROXY = "127.0.0.1,localhost,gitea.andestech.com"
-no_proxy = "127.0.0.1,localhost,gitea.andestech.com"
+http_proxy = "$http_proxy"
+https_proxy = "$https_proxy"
+HTTP_PROXY = "$HTTP_PROXY"
+HTTPS_PROXY = "$HTTPS_PROXY"
+ALL_PROXY = "$ALL_PROXY"
+all_proxy = "$all_proxy"
+NO_PROXY = "$NO_PROXY"
+no_proxy = "$no_proxy"
+
+[features]
+multi_agent = true
+use_legacy_landlock = true
