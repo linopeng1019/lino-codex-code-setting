@@ -7,6 +7,7 @@ history.jsonl
 session_index.jsonl
 models_cache.json
 version.json
+logs_*.sqlite*
 state_*.sqlite*
 state_*.sqlite-journal
 
