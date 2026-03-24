@@ -328,7 +328,7 @@ def _get_env(name: str, default: str = "") -> str:
 
 def main() -> int:
     """Entrypoint."""
-    base_url = _get_env("BUGZILLA_BASE_URL", "http://e-andes.andestech.com/bugzilla5")
+    base_url = _get_env("BUGZILLA_URL", "http://e-andes.andestech.com/bugzilla5")
     api_key = _get_env("BUGZILLA_API_KEY")
     if not api_key:
         print("BUGZILLA_API_KEY is required", file=sys.stderr)

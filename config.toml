@@ -1,49 +1,19 @@
 model = "gpt-5.4"
 model_reasoning_effort = "high"
 personality = "pragmatic"
-[projects."/home/users1/linopeng"]
-trust_level = "trusted"
-
-
 [projects."/home/users/linopeng"]
-trust_level = "trusted"
-
-[projects."/fast-playground2/linopeng/bsv/tmp/gcc-riscv"]
 trust_level = "trusted"
 
 # MCP server setting
 [mcp_servers.github]
 command = "/home/users/linopeng/.claude/plugins/github-mcp-server/bin/github-mcp-server"
 args = ["stdio"]
-
-[mcp_servers.github.env]
-GITHUB_PERSONAL_ACCESS_TOKEN = "$GITHUB_PERSONAL_ACCESS_TOKEN"
-http_proxy = "$http_proxy"
-https_proxy = "$https_proxy"
-HTTP_PROXY = "$HTTP_PROXY"
-HTTPS_PROXY = "$HTTPS_PROXY"
-ALL_PROXY = "$ALL_PROXY"
-all_proxy = "$all_proxy"
-NO_PROXY = "$NO_PROXY"
-no_proxy = "$no_proxy"
+env = {"GITHUB_PERSONAL_ACCESS_TOKEN" = "YOUR_KEY", "http_proxy" = "http://10.0.1.18:3128", "https_proxy" = "http://10.0.1.18:3128"}
 
 [mcp_servers.andes-bugzilla]
-command = "python3"
-args = [
-  "/home/users/linopeng/.codex/bugzilla-jsonrpc-mcp/server.py",
-]
-
-[mcp_servers.andes-bugzilla.env]
-BUGZILLA_API_KEY = "$BUGZILLA_API_KEY"
-BUGZILLA_BASE_URL = "http://e-andes.andestech.com/bugzilla5"
-http_proxy = "$http_proxy"
-https_proxy = "$https_proxy"
-HTTP_PROXY = "$HTTP_PROXY"
-HTTPS_PROXY = "$HTTPS_PROXY"
-ALL_PROXY = "$ALL_PROXY"
-all_proxy = "$all_proxy"
-NO_PROXY = "$NO_PROXY"
-no_proxy = "$no_proxy"
+command = "/home/users/linopeng/.nvm/versions/node/v24.12.0/bin/node"
+args = ["/home/users/linopeng/.claude/plugins/andes-bugzilla-plugin/scripts/mcp-server.cjs"]
+env = {"BUGZILLA_URL" = "http://e-andes.andestech.com/bugzilla5/rest.cgi", "BUGZILLA_API_KEY" = "YOUR_KEY"}
 
 [mcp_servers.andes-gitea]
 command = "docker"
@@ -57,17 +27,7 @@ args = [
   "/app/gitea-mcp",
   "-t", "stdio",
 ]
-
-[mcp_servers.andes-gitea.env]
-http_proxy = "$http_proxy"
-https_proxy = "$https_proxy"
-HTTP_PROXY = "$HTTP_PROXY"
-HTTPS_PROXY = "$HTTPS_PROXY"
-ALL_PROXY = "$ALL_PROXY"
-all_proxy = "$all_proxy"
-NO_PROXY = "$NO_PROXY"
-no_proxy = "$no_proxy"
+env = {"GITEA_HOST" = "https://gitea.andestech.com", "GITEA_ACCESS_TOKEN" = "YOUR_KEY"}
 
 [features]
 multi_agent = true
-use_legacy_landlock = true
